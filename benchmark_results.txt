@@ -3,12 +3,12 @@ Dataset Size               : 1691 records
 Iterations per method      : 10000
 Target ID (worst-case)     : 1691
 
-Linear Search  O(N) Time   : 2.364208 seconds
-Dictionary     O(1) Time   : 0.002892 seconds
-Speedup Factor             : 817.44x faster with dictionary
+Linear Search  O(N) Time   : 6.956829 seconds
+Dictionary     O(1) Time   : 0.002466 seconds
+Speedup Factor             : 2821.10x faster with dictionary
 
 --- Sample of first 20 records used in comparison ---
-  ID=1  amount=2000  type=1  sender=J
+  ID=1  amount=2000  type=1  sender=Jane Smith
   ID=2  amount=1000  type=1  sender=Peter Kamau
   ID=3  amount=600  type=1  sender=Peter Kamau
   ID=4  amount=0.0  type=1  sender=Unknown

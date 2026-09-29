@@ -1,6 +1,6 @@
 # Building and Securing a MoMo REST API & DSA Performance Benchmarking
 
-A lightweight Python-based RESTful API service that parses Mobile Money (MoMo) XML transaction logs, exposes full CRUD operations with HTTP Basic Authentication, and benchmarks lookup algorithms (O(N) Linear Search and O(1) Dictionary Lookup) across 1,600+ parsed records.
+A lightweight Python-based RESTful API service that parses Mobile Money (MoMo) XML transaction logs, exposes full CRUD operations with HTTP Basic Authentication, and benchmarks lookup algorithms (O(N) Linear Search and O(1) Dictionary Lookup) across 1,691 parsed records.
 
 ---
 

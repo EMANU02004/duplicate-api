@@ -27,7 +27,7 @@ def parse_sms_body(body):
         return amount, sender, receiver
 
     # 3. Received money format
-    rec_match = re.search(r"received ([\d,]+)\s*RWF from ([A-Za-z\s]+?)(?=\s+\(||\s+on|\s+\*|$)", body, re.IGNORECASE)
+    rec_match = re.search(r"received ([\d,]+)\s*RWF from ([A-Za-z\s]+?)(?=\s+\(|\s+on|\s+\*|$)", body, re.IGNORECASE)
     if rec_match:
         amount = rec_match.group(1).replace(",", "")
         sender = rec_match.group(2).strip()
@@ -65,8 +65,15 @@ def parse_xml_to_json():
 
         transactions.append(record)
 
+    matched = sum(1 for t in transactions if t["amount"] != "0.0" or t["sender"] != "Unknown")
+    unmatched = len(transactions) - matched
+
     with open("api/mock_db.json", "w") as f:
         json.dump(transactions, f, indent=4)
+
+    print(f"Parsed {len(transactions)} records -> api/mock_db.json")
+    print(f"Matched by regex : {matched} ({matched/len(transactions)*100:.1f}%)")
+    print(f"Unmatched (Unknown/0.0): {unmatched} ({unmatched/len(transactions)*100:.1f}%) - mostly bank-deposit messages")
 
 if __name__ == "__main__":
     parse_xml_to_json()
