@@ -30,6 +30,7 @@ A lightweight Python-based RESTful API service that parses Mobile Money (MoMo) X
 │   ├── Creating New Transaction.png
 │   ├── Deleting transactions.png
 │   ├── GET All Transactions.png
+│   ├── No Credentials Request.png
 │   ├── Single Transaction.png
 │   └── Updating Existing Transaction.png
 ├── tests/
@@ -82,11 +83,11 @@ All endpoints require HTTP Basic Authentication:
 
 | Method | Endpoint | Description | Status Code |
 |--------|----------|-------------|-------------|
-| GET | `/transactions` | Retrieve all transactions | 200 OK |
-| GET | `/transactions/{id}` | Retrieve one transaction | 200 / 404 |
-| POST | `/transactions` | Add a new transaction | 201 / 400 |
-| PUT | `/transactions/{id}` | Update a transaction | 200 / 404 |
-| DELETE | `/transactions/{id}` | Delete a transaction | 200 / 404 |
+| GET | `/transactions` | Retrieve all transactions | 200 / 401 |
+| GET | `/transactions/{id}` | Retrieve one transaction | 200 / 400 / 401 / 404 |
+| POST | `/transactions` | Add a new transaction | 201 / 400 / 401 |
+| PUT | `/transactions/{id}` | Partially update a transaction | 200 / 400 / 401 / 404 |
+| DELETE | `/transactions/{id}` | Delete a transaction | 200 / 400 / 401 / 404 |
 
 ---
 
@@ -112,12 +113,12 @@ Invoke-RestMethod -Uri "http://localhost:8000/transactions" -Method POST -Header
 ### PUT — Update Transaction
 ```powershell
 $body = '{"amount":"12000"}'
-Invoke-RestMethod -Uri "http://localhost:8000/transactions/1" -Method PUT -Headers $headers -ContentType "application/json" -Body $body
+Invoke-RestMethod -Uri "http://localhost:8000/transactions/2" -Method PUT -Headers $headers -ContentType "application/json" -Body $body
 ```
 
 ### DELETE — Remove Transaction
 ```powershell
-Invoke-RestMethod -Uri "http://localhost:8000/transactions/1" -Method DELETE -Headers $headers
+Invoke-RestMethod -Uri "http://localhost:8000/transactions/2" -Method DELETE -Headers $headers
 ```
 
 ---
